@@ -1,0 +1,17 @@
+﻿@page
+@model RazorWeb.Pages.Shared.Blog.DeleteModel
+
+@{
+    ViewData["Title"] = "Xóa";
+}
+
+<h1>Delete</h1>
+
+<h3>Có chắc xóa bài viết hay không?</h3>
+<div>
+    <form method="post">
+        <input type="hidden" asp-for="Article.ID" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-page="./Index">Danh sách bài viết</a>
+    </form>
+</div>

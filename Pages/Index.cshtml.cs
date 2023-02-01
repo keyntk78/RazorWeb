@@ -1,28 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using RazorWeb.Models;
 
 namespace RazorWeb.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly RazorWeb.Models.MyBlogContext _context;
 
-        private readonly MyBlogContext myBlogContext;
-
-        public IndexModel(ILogger<IndexModel> logger, MyBlogContext _myBlogContext)
+        public IndexModel(RazorWeb.Models.MyBlogContext context)
         {
-            _logger = logger;
-            myBlogContext = _myBlogContext;
+            _context = context;
         }
 
-        public void OnGet()
-        {
-            var posts = (from a in myBlogContext.Articles
-                        orderby a.Creadted descending
-                        select a).ToList();
+        public IList<Article> Article { get;set; } = default!;
 
-            ViewData["posts"] = posts;
+        public async Task OnGet()
+        {
+
         }
     }
 }

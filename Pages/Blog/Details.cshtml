@@ -1,0 +1,19 @@
+﻿@page "/blog/xemblog/{id:int}"
+@model RazorWeb.Pages.Shared.Blog.DetailsModel
+
+@{
+    ViewData["Title"] = Model.Article.Title;
+
+}
+
+<h1>@Model.Article.Title</h1>
+<p><i>@Model.Article.Creadted</i></p>
+<hr />
+@Html.DisplayFor(model=>model.Article.Content)
+
+<hr />
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Article?.ID">Sửa đổi</a> |
+    <a asp-page="./Index">Quay lại</a>
+
+</div>
